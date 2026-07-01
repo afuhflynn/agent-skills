@@ -56,7 +56,7 @@ for DEST in "${DESTS[@]}"; do
         echo "backing up $target -> $backup"
         mv "$target" "$backup"
       else
-        echo "warning: $target exists and is not a symlink — skipping (use --force to overwrite)" >&2
+        echo "warning: $target exists and is not a symlink - skipping (use --force to overwrite)" >&2
         continue
       fi
     fi

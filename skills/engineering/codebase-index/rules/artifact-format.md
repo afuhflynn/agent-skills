@@ -127,9 +127,9 @@ Group by runtime vs dev dependency. Note any deprecated or unmaintained packages
 
 List anything that was unclear, required judgment, or needs a human to confirm:
 
-- "The purpose of `src/lib/legacy/` is unclear — looks like old migrations but no documentation."
+- "The purpose of `src/lib/legacy/` is unclear - looks like old migrations but no documentation."
 - "The `.env.production` file is gitignored; values are unknown."
-- "The `sendEmail` function in `src/core/notifications.ts` is called but never imported — possibly dead code."
+- "The `sendEmail` function in `src/core/notifications.ts` is called but never imported - possibly dead code."
 - "CI/CD config references a `DEPLOY_KEY` secret; no further context found."
 
 ## 2. Section Format

@@ -15,7 +15,7 @@ The `codebase-index` skill produces a structured markdown artifact with sections
 - "Config And Secrets Posture"
 - "Recommended Reading Order"
 
-Not all sections will have the same names — the index artifact's section names depend on the detected project type.
+Not all sections will have the same names - the index artifact's section names depend on the detected project type.
 
 ## 2. Signal Extraction Guide
 
@@ -29,7 +29,7 @@ Look in the index artifact's **Stack And Runtime** section or equivalent.
 |---|---|
 | Primary language | First sentence of stack section: "Language: X" or "Framework: X in Y" |
 | Runtime version | Version strings following language names, `.nvmrc`, `.python-version` references |
-| Package manager | "Package manager: X — lockfile at Y" or mention in stack section |
+| Package manager | "Package manager: X - lockfile at Y" or mention in stack section |
 
 **Fallback detection** (if index doesn't state explicitly):
 - `package.json` + `pnpm-lock.yaml` → Node.js + pnpm
@@ -284,6 +284,6 @@ This format makes it easy to fill the section-catalog templates.
 For each missing signal:
 
 1. Check whether the index artifact mentions it under a different section name.
-2. If still missing, set the signal to `"Not detected — verify manually"`.
+2. If still missing, set the signal to `"Not detected - verify manually"`.
 3. Do not guess or hallucinate values.
 4. Note the missing signal in the validation report as a caveat.

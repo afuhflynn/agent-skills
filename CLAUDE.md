@@ -2,12 +2,12 @@
 
 Agent skills are organized into bucket folders under `skills/`:
 
-- `engineering/` — daily code work
-- `productivity/` — daily non-code workflow tools
-- `misc/` — kept around but rarely used, not promoted
-- `in-progress/` — drafts not yet ready to ship
-- `personal/` — tied to my own setup, not promoted
-- `deprecated/` — no longer used
+- `engineering/` - daily code work
+- `productivity/` - daily non-code workflow tools
+- `misc/` - kept around but rarely used, not promoted
+- `in-progress/` - drafts not yet ready to ship
+- `personal/` - tied to my own setup, not promoted
+- `deprecated/` - no longer used
 
 Every skill in `engineering/` or `productivity/` (the **promoted** buckets) must have a reference in the top-level `README.md` and an entry in `.claude-plugin/plugin.json`. Skills in `misc/`, `personal/`, `in-progress/`, and `deprecated/` must not appear in either.
 

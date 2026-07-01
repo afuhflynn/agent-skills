@@ -36,7 +36,7 @@
 - Type definitions: `.d.ts` files, `typings/`, `types/`
 - Entry point in `package.json` (`main`, `module`, `types`, `exports`)
 - Build output config: `tsconfig.json` outDir, `setup.py` packages
-- README examples — these are the "interface" the library exposes
+- README examples - these are the "interface" the library exposes
 - Test files showing usage patterns
 
 **Configs to expect**: `package.json`, `tsconfig.json`, `.npmignore`, `LICENSE`
@@ -62,7 +62,7 @@
 - Output formatting: stdout/stderr handling, color output, progress bars
 - Error handling: exit codes, error messages
 
-**Configs to expect**: None or minimal — CLI tools often have no project-level config.
+**Configs to expect**: None or minimal - CLI tools often have no project-level config.
 
 ## Docker / Infrastructure Project
 
@@ -76,7 +76,7 @@
 - Service mesh / ingress configs (nginx, traefik, envoy)
 - Monitoring configs (prometheus, grafana, datadog)
 
-**Focus**: Infrastructure is connective tissue — trace every service name, port, volume, and secret reference back to the application code it serves.
+**Focus**: Infrastructure is connective tissue - trace every service name, port, volume, and secret reference back to the application code it serves.
 
 ## When Archetypes Overlap
 

@@ -14,7 +14,7 @@ A bucket (`engineering/`, `productivity/`) whose skills are registered in `.clau
 A skill reachable only by the human typing its name. Has `disable-model-invocation: true` in frontmatter.
 
 **Model-invoked skill**:
-A skill reachable by the model or the human. The default mode — no `disable-model-invocation` flag.
+A skill reachable by the model or the human. The default mode - no `disable-model-invocation` flag.
 
 **Agent harness**:
 The runtime that loads, discovers, and invokes skills from plugin registration. Examples: Claude Code's built-in harness, skills.sh's harness.

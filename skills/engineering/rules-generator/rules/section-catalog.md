@@ -32,10 +32,10 @@ Each section in the generated `RULES.md` should start with a level-2 heading (`#
 ```markdown
 ## 1. Tech Stack & Framework
 
-- Language: {language} {version} — detected from {source_file}
-- Runtime: {runtime} — detected from {source_file}
-- Framework: {framework} — configured in {source_file}
-- Package manager: {manager} — lockfile at {lockfile_path}
+- Language: {language} {version} - detected from {source_file}
+- Runtime: {runtime} - detected from {source_file}
+- Framework: {framework} - configured in {source_file}
+- Package manager: {manager} - lockfile at {lockfile_path}
 - Key dependencies: {list of major deps with source_file}
 ```
 
@@ -80,7 +80,7 @@ Each section in the generated `RULES.md` should start with a level-2 heading (`#
 
 ## 3. Data Flow
 
-**Purpose**: Document how data moves through the system — from UI/entry point to persistence and back.
+**Purpose**: Document how data moves through the system - from UI/entry point to persistence and back.
 
 | Signal needed | Source |
 |---|---|
@@ -141,8 +141,8 @@ The canonical data flow is:
 ```markdown
 ## 4. State Management & Caching
 
-- Server state: {library} — configured in {source_file} with staleTime={value}
-- Client state: {library} — stores in {store_files}
+- Server state: {library} - configured in {source_file} with staleTime={value}
+- Client state: {library} - stores in {store_files}
 - Cache keys: centralized in {key_file}
 - Cache invalidation: {pattern_description}
 ```
@@ -176,9 +176,9 @@ The canonical data flow is:
 ```markdown
 ## 5. Persistence / Database
 
-- Database: {db_type} — configured in {source_file}
-- ORM: {orm} — schema at {schema_file}
-- Migrations: {tool} — directory at {migration_dir}
+- Database: {db_type} - configured in {source_file}
+- ORM: {orm} - schema at {schema_file}
+- Migrations: {tool} - directory at {migration_dir}
 - Schema source of truth: {schema_file}
 - Key models: {list with source line references}
 - Migration command: {command}
@@ -215,7 +215,7 @@ The canonical data flow is:
 
 - Pattern: {REST/GraphQL/tRPC/gRPC}
 - Route structure: {route_tree_summary}
-- Validation: {tool} — {location}
+- Validation: {tool} - {location}
 - Response format: {description}
 - Error handling: {description}
 ```
@@ -249,9 +249,9 @@ The canonical data flow is:
 ```markdown
 ## 7. Authentication & Authorization
 
-- Auth library: {library} — configured in {source_file}
+- Auth library: {library} - configured in {source_file}
 - Strategy: {session/JWT/OAuth}
-- Middleware: {middleware_file} — guards {guarded_routes}
+- Middleware: {middleware_file} - guards {guarded_routes}
 - Admin role: {admin_check_details}
 - Rules: {auth_rules_from_index}
 ```
@@ -285,7 +285,7 @@ The canonical data flow is:
 ```markdown
 ## 8. Testing
 
-- Framework: {framework} — configured in {config_file}
+- Framework: {framework} - configured in {config_file}
 - Location: {test_location_convention}
 - Commands: {test_commands}
 - Coverage: {coverage_tool_and_target}
@@ -321,9 +321,9 @@ The canonical data flow is:
 ```markdown
 ## 9. Linting, Formatting & Code Quality
 
-- Linter: {tool} — configured in {config_file}
-- Formatter: {tool} — configured in {config_file}
-- Pre-commit: {yes/no} — config at {config_file}
+- Linter: {tool} - configured in {config_file}
+- Formatter: {tool} - configured in {config_file}
+- Pre-commit: {yes/no} - config at {config_file}
 - Key rules: {notable_rule_highlights}
 ```
 
@@ -355,8 +355,8 @@ The canonical data flow is:
 ```markdown
 ## 10. Package Manager & Dependencies
 
-- Manager: {manager} — lockfile at {lockfile}
-- Workspace: {monorepo/single_package} — config at {workspace_file}
+- Manager: {manager} - lockfile at {lockfile}
+- Workspace: {monorepo/single_package} - config at {workspace_file}
 - Install: `{install_command}`
 - Add dependency: `{add_command}`
 - Rules: {dependency_management_rules}
@@ -391,8 +391,8 @@ The canonical data flow is:
 ```markdown
 ## 11. Build & Deploy
 
-- Build: `{build_command}` — configured in {source_file}
-- CI/CD: {platform} — config at {ci_config_file}
+- Build: `{build_command}` - configured in {source_file}
+- CI/CD: {platform} - config at {ci_config_file}
 - Docker: {docker_file_location}
 - Deploy target: {platform}
 - Rules: {build_deploy_rules}
@@ -428,8 +428,8 @@ The canonical data flow is:
 
 - Env files: {env_file_patterns}
 - Example file: {example_env_path}
-- Loading: {loading_mechanism} — in {source_file}
-- Validation: {validation_method} — in {source_file}
+- Loading: {loading_mechanism} - in {source_file}
+- Validation: {validation_method} - in {source_file}
 - Rules: {env_management_rules}
 ```
 
@@ -448,7 +448,7 @@ The canonical data flow is:
 | Incomplete features | Placeholder UIs, missing pages |
 | Security gaps | Missing validation, webhook verification gaps |
 
-**No per-language adaptations needed** — this section is entirely codebase-specific.
+**No per-language adaptations needed** - this section is entirely codebase-specific.
 
 **Output template**:
 
@@ -472,7 +472,7 @@ The canonical data flow is:
 | Contract stability | Type sharing patterns, API response consistency |
 | Code quality | Build/lint/test pre-merge gates |
 
-**No per-language adaptations needed** — these are universal safety principles adapted to the detected patterns.
+**No per-language adaptations needed** - these are universal safety principles adapted to the detected patterns.
 
 **Output template**:
 
@@ -499,7 +499,7 @@ Default candidates (always include those that apply):
 
 **Purpose**: List the key files an agent should read before making large changes.
 
-**No per-language adaptations needed** — derived from the index artifact's key entry points.
+**No per-language adaptations needed** - derived from the index artifact's key entry points.
 
 **Output template**:
 

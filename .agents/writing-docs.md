@@ -4,13 +4,13 @@ Every skill in `engineering/` and `productivity/` has a human-facing **docs page
 
 Act whenever a promoted skill is added, renamed, or has its behaviour changed: create or re-sync its docs page.
 
-Because these pages are published, every link is absolute — never a repo-relative path.
+Because these pages are published, every link is absolute - never a repo-relative path.
 
 ## Page structure
 
 Each docs page should contain:
 
-- **Quickstart** — how to install the skill
-- **What it does** — one or two paragraphs, lead with the one-sentence job
-- **When to reach for it** — invocation mode and trigger boundary
-- **Where it fits** — role in the skill ecosystem
+- **Quickstart** - how to install the skill
+- **What it does** - one or two paragraphs, lead with the one-sentence job
+- **When to reach for it** - invocation mode and trigger boundary
+- **Where it fits** - role in the skill ecosystem

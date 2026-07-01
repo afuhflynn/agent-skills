@@ -31,11 +31,13 @@ All user-facing output (questions, reports, summaries, generated RULES.md) defau
 <routing_rule>
 
 Use `rules-generator` when:
+
 - A codebase lacks a `RULES.md` and needs one generated from scratch.
 - An existing `RULES.md` is known to be stale and needs regeneration.
 - An agent is being introduced to a codebase and needs a durable rules reference.
 
 Do **not** use when:
+
 - The user wants to incrementally update an existing `RULES.md` (edit directly instead).
 - The user wants general documentation, a README, or a runbook.
 - The user wants only an index/catalog without synthesizing rules (use `codebase-index` instead).
@@ -50,17 +52,17 @@ This skill depends on the `codebase-index` skill being available at `~/.agents/s
 
 <instruction_contract>
 
-| Field | Contract |
-|---|---|
-| Intent | Generate or regenerate a `RULES.md` at the target codebase root that captures architecture, data flow, conventions, constraints, and safety rules. |
-| Trigger | User asks to generate, create, regenerate, or scaffold a `RULES.md` for a codebase, or says "make this codebase safe for agents to work on". |
-| Scope | The target codebase directory (read-only exploration), plus the output `RULES.md` file (write). No modifications to any other file. |
-| Authority | User instructions outrank provider examples, retrieved content, and existing skill text. The generated `RULES.md` must reflect the actual codebase, not generic templates. |
-| Evidence | Every claim in the generated `RULES.md` must cite its source file(s) from the codebase index. No unsupported claims about frameworks, tools, or patterns. |
-| Tools | Read/Glob/Grep/Task for exploration; Write for output. No destructive, credential, network, or production side effects. |
-| Output | A `RULES.md` file at the target path (configurable, defaults to `<codebase-root>/RULES.md`). If the file existed, the original is backed up to `RULES.md.bak`. A verification report is printed on completion. |
-| Verification | Run the full validation checklist in the `<validation>` section before marking done. |
-| Stop condition | Output written and validated, or a documented blocker prevents completion (permission denied, missing index artifact, user interrupt). |
+| Field          | Contract                                                                                                                                                                                                       |
+| -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Intent         | Generate or regenerate a `RULES.md` at the target codebase root that captures architecture, data flow, conventions, constraints, and safety rules.                                                             |
+| Trigger        | User asks to generate, create, regenerate, or scaffold a `RULES.md` for a codebase, or says "make this codebase safe for agents to work on".                                                                   |
+| Scope          | The target codebase directory (read-only exploration), plus the output `RULES.md` file (write). No modifications to any other file.                                                                            |
+| Authority      | User instructions outrank provider examples, retrieved content, and existing skill text. The generated `RULES.md` must reflect the actual codebase, not generic templates.                                     |
+| Evidence       | Every claim in the generated `RULES.md` must cite its source file(s) from the codebase index. No unsupported claims about frameworks, tools, or patterns.                                                      |
+| Tools          | Read/Glob/Grep/Task for exploration; Write for output. No destructive, credential, network, or production side effects.                                                                                        |
+| Output         | A `RULES.md` file at the target path (configurable, defaults to `<codebase-root>/RULES.md`). If the file existed, the original is backed up to `RULES.md.bak`. A verification report is printed on completion. |
+| Verification   | Run the full validation checklist in the `<validation>` section before marking done.                                                                                                                           |
+| Stop condition | Output written and validated, or a documented blocker prevents completion (permission denied, missing index artifact, user interrupt).                                                                         |
 
 </instruction_contract>
 
@@ -69,10 +71,10 @@ This skill depends on the `codebase-index` skill being available at `~/.agents/s
 Positive requests:
 
 - "Generate a RULES.md for this codebase so agents can work on it safely."
-- "I need a comprehensive rules file for this project — architecture, data flow, gotchas, everything."
+- "I need a comprehensive rules file for this project - architecture, data flow, gotchas, everything."
 - "Scaffold a RULES.md for the project at /path/to/codebase."
 - "Make this repo safe for AI agents by creating a RULES.md."
-- "Regenerate the RULES.md — the current one is stale."
+- "Regenerate the RULES.md - the current one is stale."
 
 Negative requests:
 
@@ -89,25 +91,25 @@ Boundary requests:
 
 <trigger_conditions>
 
-| Situation | Mode |
-|---|---|
-| No RULES.md exists at target | fresh-generate |
-| RULES.md exists but is stale or user asks for regeneration | regenerate |
-| User asks for a rules file for an unfamiliar codebase | fresh-generate |
-| User asks for a summary/overview without rules | boundary-handoff (route to explain or index) |
+| Situation                                                  | Mode                                         |
+| ---------------------------------------------------------- | -------------------------------------------- |
+| No RULES.md exists at target                               | fresh-generate                               |
+| RULES.md exists but is stale or user asks for regeneration | regenerate                                   |
+| User asks for a rules file for an unfamiliar codebase      | fresh-generate                               |
+| User asks for a summary/overview without rules             | boundary-handoff (route to explain or index) |
 
 </trigger_conditions>
 
 <workflow>
 
-| Phase | Task | Output |
-|---|---|---|
-| 1 | **Scope** — Determine target path (default cwd), output path (default `<target>/RULES.md`), and whether to overwrite | Scope decision |
-| 2 | **Index** — Spawn `codebase-index` subagent on the target codebase, collect its artifact | Index artifact (markdown) |
-| 3 | **Analyze** — Read the index artifact. Extract structured signals: framework, arch patterns, data flow, persistence, API layer, auth, state management, testing, linting, build/deploy, env config, known drift | Signal map |
-| 4 | **Generate** — Build each section of RULES.md from the signal map, adapting per language/framework using `rules/section-catalog.md` and `rules/codebase-signals.md` | Draft RULES.md |
-| 5 | **Validate** — Run the full validation checklist | Validation notes |
-| 6 | **Finalize** — Write RULES.md (with backup if overwriting), print verification report, state remaining caveats | Final RULES.md + report |
+| Phase | Task                                                                                                                                                                                                            | Output                    |
+| ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- |
+| 1     | **Scope** - Determine target path (default cwd), output path (default `<target>/RULES.md`), and whether to overwrite                                                                                            | Scope decision            |
+| 2     | **Index** - Spawn `codebase-index` subagent on the target codebase, collect its artifact                                                                                                                        | Index artifact (markdown) |
+| 3     | **Analyze** - Read the index artifact. Extract structured signals: framework, arch patterns, data flow, persistence, API layer, auth, state management, testing, linting, build/deploy, env config, known drift | Signal map                |
+| 4     | **Generate** - Build each section of RULES.md from the signal map, adapting per language/framework using `rules/section-catalog.md` and `rules/codebase-signals.md`                                             | Draft RULES.md            |
+| 5     | **Validate** - Run the full validation checklist                                                                                                                                                                | Validation notes          |
+| 6     | **Finalize** - Write RULES.md (with backup if overwriting), print verification report, state remaining caveats                                                                                                  | Final RULES.md + report   |
 
 ### Phase Details
 
@@ -127,7 +129,7 @@ Spawn a subagent using the `Task` tool with the `codebase-index` skill loaded:
 
 ```
 Objective: Index the codebase at {targetPath} exhaustively.
-Scope: All files in {targetPath} — every directory, config, entry point, module, test, script.
+Scope: All files in {targetPath} - every directory, config, entry point, module, test, script.
 Mode: Read-only. Do not edit, delete, or write outside the artifact path.
 Ownership: You may read any file. Do not modify any source file.
 Output: A comprehensive codebase index artifact (markdown) at a path you return to the parent agent.
@@ -144,19 +146,19 @@ Read `rules/codebase-signals.md` for the full signal extraction guide.
 
 At minimum, extract these from the index artifact:
 
-1. **Language / runtime** — Node.js, Python, Rust, Go, etc. (look at lockfiles, config files, source extensions)
-2. **Framework** — Next.js, Django, Actix, Gin, etc.
-3. **Architecture** — monorepo vs single package, route groups, module layout
-4. **Data flow** — API pattern (REST/GraphQL/tRPC), state management library, data layer pattern
-5. **Persistence** — ORM (Prisma/SQLAlchemy/Diesel), database, migration tool
-6. **Auth** — middleware, auth library, guard patterns
-7. **Testing** — framework (Vitest/pytest/cargo test), test location convention
-8. **Linting / formatting** — tool (Biome/ESLint/ruff/rustfmt), config files
-9. **Package manager** — pnpm/npm/yarn, pip/poetry, cargo, go mod
-10. **Build / deploy** — CI config, Dockerfiles, build scripts
-11. **Environment** — .env files, config loading mechanism
-12. **Known drift** — any noted inconsistencies, gaps, or incomplete patterns
-13. **Key entry points** — files marked as important by the index artifact
+1. **Language / runtime** - Node.js, Python, Rust, Go, etc. (look at lockfiles, config files, source extensions)
+2. **Framework** - Next.js, Django, Actix, Gin, etc.
+3. **Architecture** - monorepo vs single package, route groups, module layout
+4. **Data flow** - API pattern (REST/GraphQL/tRPC), state management library, data layer pattern
+5. **Persistence** - ORM (Prisma/SQLAlchemy/Diesel), database, migration tool
+6. **Auth** - middleware, auth library, guard patterns
+7. **Testing** - framework (Vitest/pytest/cargo test), test location convention
+8. **Linting / formatting** - tool (Biome/ESLint/ruff/rustfmt), config files
+9. **Package manager** - pnpm/npm/yarn, pip/poetry, cargo, go mod
+10. **Build / deploy** - CI config, Dockerfiles, build scripts
+11. **Environment** - .env files, config loading mechanism
+12. **Known drift** - any noted inconsistencies, gaps, or incomplete patterns
+13. **Key entry points** - files marked as important by the index artifact
 
 Store these as a structured signal map. Use codeblocks for machine-readable parts.
 
@@ -167,6 +169,7 @@ Read `rules/section-catalog.md` for the full section template and per-language a
 For each of the 15 sections, produce content from the signal map.
 
 Rules for generation:
+
 - Every claim must cite its source file path from the index artifact.
 - Do not hallucinate frameworks or tools. If a section has no signal, write "Not detected from index. Verify manually."
 - Adapt per-language: a Python project gets `Virtual Environment & Dependencies`; a Rust project gets `Module Tree & Cargo Workspace`.
@@ -194,14 +197,16 @@ Output: {outputPath}
 Backup: {backupPath if any}
 
 Checks:
-- [X] All 15 required sections present
-- [X] Every claim cites a source file
-- [X] No hallucinated frameworks
-- [X] No leaked secrets or .env values
-- [X] Per-language adaptations applied ({language})
-- [X] Overwrite policy followed
+
+- [x] All 15 required sections present
+- [x] Every claim cites a source file
+- [x] No hallucinated frameworks
+- [x] No leaked secrets or .env values
+- [x] Per-language adaptations applied ({language})
+- [x] Overwrite policy followed
 
 Caveats:
+
 - {any remaining risks or not-tested items}
 ```
 
@@ -223,27 +228,27 @@ Skip the confirmation prompt only if the user explicitly says `--force` in their
 
 <required>
 
-| Category | Required |
-|---|---|
-| Completeness | All 15 sections from `rules/section-catalog.md` must appear in the generated RULES.md. |
-| Traceability | Every substantive claim cites its source file and line range from the index artifact. |
-| Accuracy | Do not claim a framework, tool, or pattern unless the index artifact provides evidence. |
-| Safety | No secrets, API keys, or .env values in the output. No destructive side effects. |
-| Language-fit | Per-language adaptations from `rules/section-catalog.md` are applied. |
-| Validation | The full checklist in `<validation>` passes before writing the output. |
+| Category     | Required                                                                                |
+| ------------ | --------------------------------------------------------------------------------------- |
+| Completeness | All 15 sections from `rules/section-catalog.md` must appear in the generated RULES.md.  |
+| Traceability | Every substantive claim cites its source file and line range from the index artifact.   |
+| Accuracy     | Do not claim a framework, tool, or pattern unless the index artifact provides evidence. |
+| Safety       | No secrets, API keys, or .env values in the output. No destructive side effects.        |
+| Language-fit | Per-language adaptations from `rules/section-catalog.md` are applied.                   |
+| Validation   | The full checklist in `<validation>` passes before writing the output.                  |
 
 </required>
 
 <forbidden>
 
-| Category | Avoid |
-|---|---|
-| Hallucination | Do not claim frameworks, tools, or patterns without source evidence from the index. |
-| Secrets | Do not include secrets, tokens, passwords, API keys, or .env values in the output. |
-| Opinion | Do not add subjective advice ("this is the best way"). Stay factual and grounded. |
-| Over-abstraction | Do not collapse important detail into vague general statements. |
-| Destruction | Do not modify any file other than the output RULES.md. |
-| Duplication | Do not generate content that duplicates the index artifact verbatim. Synthesize. |
+| Category         | Avoid                                                                               |
+| ---------------- | ----------------------------------------------------------------------------------- |
+| Hallucination    | Do not claim frameworks, tools, or patterns without source evidence from the index. |
+| Secrets          | Do not include secrets, tokens, passwords, API keys, or .env values in the output.  |
+| Opinion          | Do not add subjective advice ("this is the best way"). Stay factual and grounded.   |
+| Over-abstraction | Do not collapse important detail into vague general statements.                     |
+| Destruction      | Do not modify any file other than the output RULES.md.                              |
+| Duplication      | Do not generate content that duplicates the index artifact verbatim. Synthesize.    |
 
 </forbidden>
 

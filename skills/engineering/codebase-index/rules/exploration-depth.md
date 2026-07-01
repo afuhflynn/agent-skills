@@ -1,6 +1,6 @@
 # Exploration Depth
 
-**Purpose**: Define how deep to explore each part of the codebase — when to drill down to every function and when a directory summary is enough.
+**Purpose**: Define how deep to explore each part of the codebase - when to drill down to every function and when a directory summary is enough.
 
 ## 1. Depth Levels
 

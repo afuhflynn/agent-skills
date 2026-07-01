@@ -14,7 +14,7 @@ compatibility: Works with any language or framework. Uses read, glob, and grep t
 
 Invoke this skill when you are dropped into an unfamiliar codebase and need to understand **every part of it** before making changes. It drives a structured, depth-first exploration that leaves no file, module, config, test, or data flow unexamined.
 
-The output is a **codebase index artifact** — a durable reference the agent (and human) can consult for all future work.
+The output is a **codebase index artifact** - a durable reference the agent (and human) can consult for all future work.
 
 <output_language>
 
@@ -33,7 +33,7 @@ All user-facing output (index artifact, summaries, reports, questions) defaults 
 
 <routing_rule>
 
-Use `codebase-index` when the primary goal is **thoroughly understanding an existing codebase** — all of it, not just one module or one diff.
+Use `codebase-index` when the primary goal is **thoroughly understanding an existing codebase** - all of it, not just one module or one diff.
 
 Do **not** use when:
 
@@ -46,16 +46,16 @@ Do **not** use when:
 
 <instruction_contract>
 
-| Field | Contract |
-|---|---|
-| Intent | Agent builds a complete, verifiable mental model of the entire codebase. |
-| Trigger | User asks to index, onboard to, inventory, or exhaustively understand a codebase. |
-| Scope | Reading and synthesis only — the agent may read any file but must not edit, delete, or write outside the output artifact path. |
-| Authority | Project-level docs (README, AGENTS.md, CONTRIBUTING.md) outrank generic archetype patterns in `references/`. |
-| Evidence | Every claim in the index artifact must cite its source file and line range. |
-| Tools | Read, Glob, Grep, and Task (for parallel module exploration). No edit, write, or destructive tools. |
-| Output | A markdown index artifact at a path the agent can reference. |
-| Verification | Run the verification checklist in `rules/verification.md` before marking done. |
+| Field          | Contract                                                                                                                              |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| Intent         | Agent builds a complete, verifiable mental model of the entire codebase.                                                              |
+| Trigger        | User asks to index, onboard to, inventory, or exhaustively understand a codebase.                                                     |
+| Scope          | Reading and synthesis only - the agent may read any file but must not edit, delete, or write outside the output artifact path.        |
+| Authority      | Project-level docs (README, AGENTS.md, CONTRIBUTING.md) outrank generic archetype patterns in `references/`.                          |
+| Evidence       | Every claim in the index artifact must cite its source file and line range.                                                           |
+| Tools          | Read, Glob, Grep, and Task (for parallel module exploration). No edit, write, or destructive tools.                                   |
+| Output         | A markdown index artifact at a path the agent can reference.                                                                          |
+| Verification   | Run the verification checklist in `rules/verification.md` before marking done.                                                        |
 | Stop condition | Artifact passes verification, or a documented blocker prevents further exploration (missing deps, permission denied, user interrupt). |
 
 </instruction_contract>
@@ -84,25 +84,25 @@ Boundary requests:
 
 <trigger_conditions>
 
-| Situation | Mode |
-|---|---|
-| Agent has just entered an unfamiliar codebase and needs full understanding | full-index |
-| User explicitly asks for codebase onboarding/indexing | full-index |
-| User asks about a single module with explicit scope limit | focused-deep-dive |
-| User asks for high-level overview only | boundary-handoff |
+| Situation                                                                  | Mode              |
+| -------------------------------------------------------------------------- | ----------------- |
+| Agent has just entered an unfamiliar codebase and needs full understanding | full-index        |
+| User explicitly asks for codebase onboarding/indexing                      | full-index        |
+| User asks about a single module with explicit scope limit                  | focused-deep-dive |
+| User asks for high-level overview only                                     | boundary-handoff  |
 
 </trigger_conditions>
 
 <workflow>
 
-| Phase | Task | Output |
-|---|---|---|
-| 1 | **Surface Scan** — README, package.json, directory tree, language/framework detection, project type classification | Project identity card: name, language, framework, build system, repo structure (monorepo vs single package) |
-| 2 | **Config & Entry Points** — build configs, environment files, routing, CLI entry points, main/index files | Config inventory and entry-point map |
-| 3 | **Dependency Map** — trace internal module dependency graph (import/require chains), audit external dependencies | Internal module dependency map + external dependency audit |
-| 4 | **Domain & Data Flow** — key entities, data models, API contracts, state management, cross-module data flow | Domain model map and data flow description |
-| 5 | **Testing & Infra** — test framework, test patterns, CI/CD config, deployment, Docker, infra-as-code | Test strategy summary and infra inventory |
-| 6 | **Synthesis** — produce the index artifact, run the completeness check, flag unknowns for human | Final codebase index artifact |
+| Phase | Task                                                                                                               | Output                                                                                                      |
+| ----- | ------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------- |
+| 1     | **Surface Scan** - README, package.json, directory tree, language/framework detection, project type classification | Project identity card: name, language, framework, build system, repo structure (monorepo vs single package) |
+| 2     | **Config & Entry Points** - build configs, environment files, routing, CLI entry points, main/index files          | Config inventory and entry-point map                                                                        |
+| 3     | **Dependency Map** - trace internal module dependency graph (import/require chains), audit external dependencies   | Internal module dependency map + external dependency audit                                                  |
+| 4     | **Domain & Data Flow** - key entities, data models, API contracts, state management, cross-module data flow        | Domain model map and data flow description                                                                  |
+| 5     | **Testing & Infra** - test framework, test patterns, CI/CD config, deployment, Docker, infra-as-code               | Test strategy summary and infra inventory                                                                   |
+| 6     | **Synthesis** - produce the index artifact, run the completeness check, flag unknowns for human                    | Final codebase index artifact                                                                               |
 
 Phases 2–5 can run as parallel sub-agents when the codebase is large (see `rules/exploration-depth.md` for thresholds).
 
@@ -110,34 +110,34 @@ After Phase 6, the agent must run the **completeness backstop**: trace every imp
 
 ### Next-file read order
 
-1. `rules/exploration-depth.md` — before starting Phase 1, to set depth expectations
-2. `rules/artifact-format.md` — before Phase 6, to shape the output
-3. `rules/verification.md` — before declaring completion
-4. `references/codebase-archetypes.md` — during Phase 1 if the project type is unclear
+1. `rules/exploration-depth.md` - before starting Phase 1, to set depth expectations
+2. `rules/artifact-format.md` - before Phase 6, to shape the output
+3. `rules/verification.md` - before declaring completion
+4. `references/codebase-archetypes.md` - during Phase 1 if the project type is unclear
 
 </workflow>
 
 <required>
 
-| Category | Required |
-|---|---|
-| Completeness | Every directory, file, config, test, and script must be cataloged. |
-| Traceability | Every claim cites its source file and line range. |
-| Depth | Follow `rules/exploration-depth.md` — do not stop at surface inspection. |
-| Artifact | Produce a structured index artifact following `rules/artifact-format.md`. |
-| Verification | Run `rules/verification.md` checklist before marking done. |
-| Unknowns | Document unresolved questions and areas needing human input. |
+| Category     | Required                                                                  |
+| ------------ | ------------------------------------------------------------------------- |
+| Completeness | Every directory, file, config, test, and script must be cataloged.        |
+| Traceability | Every claim cites its source file and line range.                         |
+| Depth        | Follow `rules/exploration-depth.md` - do not stop at surface inspection.  |
+| Artifact     | Produce a structured index artifact following `rules/artifact-format.md`. |
+| Verification | Run `rules/verification.md` checklist before marking done.                |
+| Unknowns     | Document unresolved questions and areas needing human input.              |
 
 </required>
 
 <forbidden>
 
-| Category | Avoid |
-|---|---|
-| Edits | Do not modify any source file. Read-only mode. |
-| Omissions | Do not skip files because they look "unimportant" — every file gets cataloged. |
-| Guesswork | If a file's purpose is unclear, say so rather than guessing. |
-| Over-abstraction | Summarize groups of files, but also list every file individually in the index. |
+| Category              | Avoid                                                                                   |
+| --------------------- | --------------------------------------------------------------------------------------- |
+| Edits                 | Do not modify any source file. Read-only mode.                                          |
+| Omissions             | Do not skip files because they look "unimportant" - every file gets cataloged.          |
+| Guesswork             | If a file's purpose is unclear, say so rather than guessing.                            |
+| Over-abstraction      | Summarize groups of files, but also list every file individually in the index.          |
 | Run-time side effects | No `npm install`, `composer install`, `docker build`, or other side-effecting commands. |
 
 </forbidden>

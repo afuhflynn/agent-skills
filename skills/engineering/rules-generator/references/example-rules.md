@@ -10,11 +10,11 @@
 
 The file is flat (no nested sections beyond level-2 headings). Each rule is a self-contained section with:
 
-1. **Heading** (`## N. Title`) — numbering + short title
-2. **Opening paragraph** — one to three sentences stating the rule and its rationale
-3. **Evidence citations** — file paths with relative links (e.g., `[`./app/layout.tsx`](./app/layout.tsx)`)
-4. **Rules / bullet points** — actionable "Do / Do not" guidance
-5. **Warnings** — critical notes about what not to do, in bold or emphatic language
+1. **Heading** (`## N. Title`) - numbering + short title
+2. **Opening paragraph** - one to three sentences stating the rule and its rationale
+3. **Evidence citations** - file paths with relative links (e.g., `[`./app/layout.tsx`](./app/layout.tsx)`)
+4. **Rules / bullet points** - actionable "Do / Do not" guidance
+5. **Warnings** - critical notes about what not to do, in bold or emphatic language
 
 ---
 
@@ -24,7 +24,7 @@ The file is flat (no nested sections beyond level-2 headings). Each rule is a se
 
 Used for architecture, data flow, and tooling. States the canonical pattern, then lists rules.
 
-**Example** (Rule 3 — Data Flow):
+**Example** (Rule 3 - Data Flow):
 ```
 ## 3. The Data Flow Is UI -> Hook -> API -> Prisma/Integration
 
@@ -42,7 +42,7 @@ Never change a route contract in isolation if a hook or page already depends on 
 
 Used for tooling, libraries, and conventions where there are alternatives.
 
-**Example** (Rule 26 — Package Manager):
+**Example** (Rule 26 - Package Manager):
 ```
 ## 26. Package Manager: Use pnpm
 
@@ -55,7 +55,7 @@ Used for tooling, libraries, and conventions where there are alternatives.
 
 Used for architecture boundaries, security, and safety.
 
-**Example** (Rule 13 — Server-Owned Integrations):
+**Example** (Rule 13 - Server-Owned Integrations):
 ```
 ## 13. Email, Payment, And AI Must Stay Server-Owned
 
@@ -72,7 +72,7 @@ Rules:
 
 Used for feature-to-code mappings. A table listing each feature with its hook owner, API owner, and cache keys.
 
-**Example** (Rule 7 — UI/API/Cache Ownership):
+**Example** (Rule 7 - UI/API/Cache Ownership):
 ```
 - Notes:
   - hook owner: `hooks/useNotes.ts`
@@ -88,18 +88,18 @@ Used for feature-to-code mappings. A table listing each feature with its hook ow
 
 Used for known issues, inconsistencies, and foot-guns. Bullet list of specific problems with file paths.
 
-**Example** (Rule 24 — Existing Drift):
+**Example** (Rule 24 - Existing Drift):
 ```
 Known drift already present:
 - `app/api/subscription/me/route.ts` returns `{ subscription, previousPlan }` but `usePlan` may not consume the shape correctly.
-- middleware writes `redirect`, sign-in reads `callbackUrl` — parameter name mismatch.
+- middleware writes `redirect`, sign-in reads `callbackUrl` - parameter name mismatch.
 ```
 
 ### Archetype F: "Read these first" (Checklist)
 
 Used for onboarding and pre-work. Simple numbered list.
 
-**Example** (Rule 25 — Read Before Changes):
+**Example** (Rule 25 - Read Before Changes):
 ```
 ## 25. Read These Files Before Large Changes
 
@@ -112,7 +112,7 @@ Used for onboarding and pre-work. Simple numbered list.
 
 Used for safety rules. Bold imperative statements with no exceptions.
 
-**Example** (Rule 30 — Safety):
+**Example** (Rule 30 - Safety):
 ```
 - Do not commit secrets from `.env`. Use `.env.example` for documentation.
 - Do not expose provider keys in client code.
