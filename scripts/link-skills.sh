@@ -21,7 +21,10 @@ resolve_path() {
 }
 
 REPO="$(cd "$(dirname "$0")/.." && pwd)"
-DESTS=("$HOME/.claude/skills" "$HOME/.agents/skills")
+# Multi-harness destinations. All five harnesses converge on .agents/skills;
+# Claude also reads ~/.claude/skills, OpenCode also reads ~/.config/opencode/skills,
+# Codex also accepts ~/.codex/skills (deprecated alias), Antigravity also reads ~/.gemini/antigravity/skills.
+DESTS=("$HOME/.claude/skills" "$HOME/.agents/skills" "$HOME/.config/opencode/skills" "$HOME/.codex/skills" "$HOME/.gemini/antigravity/skills")
 
 names=()
 srcs=()

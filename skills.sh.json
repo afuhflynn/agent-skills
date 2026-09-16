@@ -7,7 +7,24 @@
       "description": "Skills for deeply understanding and documenting codebases — from exhaustive indexing to generating structured rules files.",
       "skills": [
         "codebase-index",
-        "rules-generator"
+        "rules-generator",
+        "codebase-audit",
+        "context-forge"
+      ]
+    },
+    {
+      "title": "Agentic Engineering Workflow",
+      "description": "Plan, decide, build, verify, test, review, document, and sync — a full idea to shipped loop for custom use cases.",
+      "skills": [
+        "scope-plan",
+        "solution-architect",
+        "feature-build",
+        "fault-fix",
+        "test-engineer",
+        "verify-release",
+        "peer-review",
+        "state-sync",
+        "tech-writer"
       ]
     }
   ]

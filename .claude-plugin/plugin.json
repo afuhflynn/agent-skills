@@ -2,6 +2,17 @@
   "name": "agent-skills",
   "skills": [
     "./skills/engineering/codebase-index",
-    "./skills/engineering/rules-generator"
+    "./skills/engineering/rules-generator",
+    "./skills/engineering/scope-plan",
+    "./skills/engineering/codebase-audit",
+    "./skills/engineering/context-forge",
+    "./skills/engineering/solution-architect",
+    "./skills/engineering/feature-build",
+    "./skills/engineering/fault-fix",
+    "./skills/engineering/test-engineer",
+    "./skills/engineering/verify-release",
+    "./skills/engineering/peer-review",
+    "./skills/engineering/state-sync",
+    "./skills/productivity/tech-writer"
   ]
 }
