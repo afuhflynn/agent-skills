@@ -1,7 +1,7 @@
 ---
 name: verify-release
 description: "Run /verify-release after building to drive the real app and prove behavior against the spec. Scopes the change from git, runs the app the project's own way, exercises each flow and checks every acceptance criterion. Read only on code, no durable files. Pairs with /peer-review before merge."
-compatibility: Any language or framework. Agent agnostic: Claude Code, OpenCode, Codex, Copilot, Antigravity/Gemini. Uses file and process tools plus browser/HTTP driving where available; degrades to manual steps.
+compatibility: "Any language or framework. Agent agnostic: Claude Code, OpenCode, Codex, Copilot, Antigravity/Gemini. Uses file and process tools plus browser/HTTP driving where available; degrades to manual steps."
 allowed-tools: Bash, Read, Grep, Glob, Write, Agent
 ---
 

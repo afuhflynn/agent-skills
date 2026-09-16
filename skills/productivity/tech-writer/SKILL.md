@@ -2,7 +2,7 @@
 name: tech-writer
 allowed-tools: Bash, Read, Grep, Glob, Write, Edit, Agent, AskUserQuestion
 description: "Run /tech-writer `pr` | `changelog` | `release-note` | `postmortem` (or let it ask) to write the human facing prose about a change. Drafts from the real commits and diff, writing to the right place. Does not write code, tests, or specs."
-compatibility: Any language or framework. Agent agnostic: Claude Code, OpenCode, Codex, Copilot, Antigravity/Gemini. Uses file tools plus subagents where available; degrades to inline.
+compatibility: "Any language or framework. Agent agnostic: Claude Code, OpenCode, Codex, Copilot, Antigravity/Gemini. Uses file tools plus subagents where available; degrades to inline."
 ---
 
 ## Output style (plain words, no dashes, no hyphens)

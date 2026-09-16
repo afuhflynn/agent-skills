@@ -2,7 +2,7 @@
 name: state-sync
 allowed-tools: Bash, Read, Grep, Glob, Write, Edit, Agent
 description: "Run /state-sync as the last step after a change is complete, around merge, to keep durable knowledge current. Updates root and nested AGENTS.md, reconciles the scope from repo evidence, and flags specs the change made stale. Surgical edits only: it adds lines, and rewrites single lines it owns. Never a whole section, never curated prose."
-compatibility: Any language or framework. Agent agnostic: Claude Code, OpenCode, Codex, Copilot, Antigravity/Gemini. Uses file tools plus subagents where available; degrades to inline.
+compatibility: "Any language or framework. Agent agnostic: Claude Code, OpenCode, Codex, Copilot, Antigravity/Gemini. Uses file tools plus subagents where available; degrades to inline."
 ---
 
 ## Output style (plain words, no dashes, no hyphens)

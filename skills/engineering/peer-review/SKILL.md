@@ -1,7 +1,7 @@
 ---
 name: peer-review
 description: "Run /peer-review before a PR for a senior read of the diff on a fresh model that did not write the code. Ranks findings by severity and writes them to docs/reviews/. Read only, never edits code. Pairs with /verify-release which proves runtime behavior first."
-compatibility: Any language or framework. Agent agnostic: Claude Code, OpenCode, Codex, Copilot, Antigravity/Gemini. Uses file tools plus a review subagent where available; degrades to inline review.
+compatibility: "Any language or framework. Agent agnostic: Claude Code, OpenCode, Codex, Copilot, Antigravity/Gemini. Uses file tools plus a review subagent where available; degrades to inline review."
 allowed-tools: Bash, Read, Grep, Glob, Write, Agent
 argument-hint: "[with <model> | uncommitted]"
 ---

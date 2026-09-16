@@ -2,7 +2,7 @@
 name: fault-fix
 allowed-tools: Bash, Read, Grep, Glob, Write, Edit, Agent
 description: "Run /fault-fix to find and fix a bug's root cause: a test failing for an unclear reason, /verify-release finding a failure, or behavior being wrong. Runs a reproduce, localize, hypothesize, test, fix, verify loop, makes the minimal fix, and hands a regression test to /test-engineer. No features, no extra refactors."
-compatibility: Any language or framework. Agent agnostic: Claude Code, OpenCode, Codex, Copilot, Antigravity/Gemini. Uses file tools plus subagents where available; degrades to inline.
+compatibility: "Any language or framework. Agent agnostic: Claude Code, OpenCode, Codex, Copilot, Antigravity/Gemini. Uses file tools plus subagents where available; degrades to inline."
 ---
 
 ## Output style (plain words, no dashes, no hyphens)

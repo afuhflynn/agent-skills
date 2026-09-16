@@ -1,7 +1,7 @@
 ---
 name: context-forge
 description: "Run /context-forge when a codebase needs enforceable working rules for AI agents. Invokes /codebase-audit for evidence, extracts architecture, data flow, auth, testing and deploy signals, then writes the rules section into AGENTS.md (canonical) instead of a separate RULES.md. Fresh generate or regenerate only, never incremental edits."
-compatibility: Any language or framework. Agent agnostic: Claude Code, OpenCode, Codex, Copilot, Antigravity/Gemini. Uses file tools plus subagents where available; only writes the rules target plus a backup.
+compatibility: "Any language or framework. Agent agnostic: Claude Code, OpenCode, Codex, Copilot, Antigravity/Gemini. Uses file tools plus subagents where available; only writes the rules target plus a backup."
 allowed-tools: Bash, Read, Grep, Glob, Write, Edit, Agent
 ---
 
