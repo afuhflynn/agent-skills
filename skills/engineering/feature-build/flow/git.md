@@ -1,34 +1,129 @@
-# Develop: git handling (read only when git integration is on)
+# Git Workflow for Feature Branches and PRs
 
-Read this only when the nearest `AGENTS.md` `## Git` block says `integration: on`. Absent or `off` → do no active git; the engineer manages branches and commits, and the read only freshness checks still apply. Git is the one hard dependency; skip silently if there is no repo.
+This workflow is used when `AGENTS.md` contains `integration: on`.
 
-Read the setting: `integration`, `branch prefix` (default `feat/`), `commit` (`per-milestone` default, `end-of-build`, or `manual`). Local ops (branch, commit) are offers with a recommendation; **push and PR always confirm** (outward) and PR is `/tech-writer`'s job, not this skill's.
-
-**Ensure a repo exists first.** If integration is on and the project is not yet a git repo (`git rev-parse` fails), run `git init` before any branch or commit, and stage what is already there for the first commit. `/codebase-audit` normally does this the moment integration is turned on; this is the backup for a project that reached a build without it.
-
-## Branch (before building, in the freshness & collaboration check)
-
-- On the default branch (`main`/`master`) → **offer to branch** (recommended): `<prefix><feature-slug>` from the scope feature name (kebab case; e.g. `feat/accounts-sign-in`). Never build on the default branch.
-- On a feature branch already → reuse it; do not create another.
-- Resuming a half built feature (Step 3) → check out that feature's branch first if it exists and you are not on it.
-- Use the change type for the prefix when it is not a feature (`fix/`, `refine/`), else the setting's default.
-
-## Commit (as milestones land, per the `commit` setting)
-
-- `per-milestone` (default) → when a milestone lands and its typecheck is green, **offer to commit** just that milestone's files.
-- `end-of-build` → one commit when the build lands.
-- `manual` → never commit; the engineer does.
-
-Message: a **one line Conventional Commit subject**, no prose body, plus the `Co-Authored-By` trailer (required). Type from the work (`feat`, `fix`, `refactor`, `test`, `chore`), optional scope from the feature, summary in the imperative:
+## Branch Naming
 
 ```
-feat(auth): add session persistence
-
-Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>
+feature/<scope-number>-<kebab-case-feature-name>
 ```
 
-The why lives in the spec and the PR, never in the commit body (single source). Commit only what actually landed and typechecks; never commit a half done milestone. Never `git push` here (that is `/tech-writer` at PR time, confirmed).
+Examples:
+- `feature/12-inngest-background-engine`
+- `feature/13-arcjet-security-rate-limiting`
+- `feature/16-landing-page-pricing`
 
-## Report
+## Workflow Per Feature
 
-Add one line to the `/feature-build` summary: the branch you are on, and what you committed (`feat(auth): … · 3 commits`) or that commits are `manual`. If integration is off or absent, say nothing about git.
+### 1. Start Feature
+
+```bash
+git fetch origin
+git checkout main
+git pull origin main
+git checkout -b feature/NN-feature-name
+```
+
+### 2. Build the Feature
+
+Run `/feature-build <feature>` as normal. All code changes happen on the feature branch.
+
+### 3. Commit at Milestones
+
+Commit after each milestone in the scope's `Build it` checklist:
+
+```bash
+git add -A
+git commit -m "feat(scope NN): <milestone description>"
+```
+
+Use conventional commits:
+- `feat(scope NN):` new functionality
+- `fix(scope NN):` bug fix
+- `refactor(scope NN):` code restructuring
+- `test(scope NN):` test additions
+- `chore(scope NN):` config, deps, tooling
+
+### 4. Push and Open PR
+
+```bash
+git push -u origin feature/NN-feature-name
+gh pr create --title "feat(scope NN): <feature name>" --body "
+## Summary
+<one line from scope's Done when>
+
+## Scope
+Closes feature NN in docs/scope/scope.md
+
+## Checklist
+- [ ] Build passes (pnpm build)
+- [ ] Lint passes (pnpm lint)
+- [ ] Tests pass (pnpm test)
+- [ ] All scope milestones complete
+- [ ] Spec status updated to Accepted
+"
+
+### 5. Review and Merge
+
+- CI runs on PR (build, lint, test)
+- Address review feedback with additional commits
+- Squash and merge when approved
+- Delete feature branch after merge
+
+### 6. Sync After Merge
+
+```bash
+git checkout main
+git pull origin main
+git branch -d feature/NN-feature-name
+```
+
+## Scope Updates
+
+The `/feature-build` skill updates `docs/scope/scope.md` in place:
+- Status → `in-progress` when build starts
+- Milestone checkboxes ticked as each lands
+- Spec pointer line filled with code path
+- Status → `done` when you confirm
+
+These scope changes are committed with the feature's final commit.
+
+## Spec Status
+
+- Spec `Status: Proposed` → `In Progress` when build starts
+- Spec `Status: In Progress` → `Accepted` when feature ships (merged to main)
+- `/feature-build` only touches the Status line surgically
+
+## CI Pipeline (Recommended)
+
+```yaml
+# .github/workflows/ci.yml
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm build
+      - run: pnpm test
+```
+
+## Emergency Hotfix
+
+For urgent fixes to main:
+
+```bash
+git checkout main
+git pull origin main
+git checkout -b hotfix/<description>
+# fix, test, commit
+git push -u origin hotfix/<description>
+gh pr create --title "hotfix: <description>" --base main
+# merge after CI passes
+```

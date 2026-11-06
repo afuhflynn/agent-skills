@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "skills": {
+    "codebase-index": {
+      "source": "afuhflynn/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/engineering/codebase-index/SKILL.md",
+      "computedHash": "d63dff6b61eafdbe58437ef94f9675bd7c727380f2e13bfb70d127f136a2cb8d"
+    },
+    "rules-generator": {
+      "source": "afuhflynn/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/engineering/rules-generator/SKILL.md",
+      "computedHash": "346885b17c32ddcea7b9203a863df8eaf7103a5c2dff1928766f0fd719e358b8"
+    }
+  }
+}
