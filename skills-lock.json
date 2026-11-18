@@ -12,6 +12,48 @@
       "sourceType": "github",
       "skillPath": "skills/engineering/rules-generator/SKILL.md",
       "computedHash": "346885b17c32ddcea7b9203a863df8eaf7103a5c2dff1928766f0fd719e358b8"
+    },
+    "web-discoverability": {
+      "source": "afuhflynn/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/engineering/web-discoverability/SKILL.md",
+      "computedHash": "d104aa26fbad5f90a963144e732755a6be3cef0e843ffa7cdf9b31ab31f778ed"
+    },
+    "web-seo-core": {
+      "source": "afuhflynn/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/engineering/web-seo-core/SKILL.md",
+      "computedHash": "d0fe03c6a53d943add8ac3ed03256c75dec56ba46e99cfe56fb1044964193839"
+    },
+    "web-structured-data-geo": {
+      "source": "afuhflynn/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/engineering/web-structured-data-geo/SKILL.md",
+      "computedHash": "6c6e6608bf00ba04b12463d47e81ffcf01b61a3436b420d1d8deb6385cf93994"
+    },
+    "web-social-cards": {
+      "source": "afuhflynn/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/engineering/web-social-cards/SKILL.md",
+      "computedHash": "97dffb219dc71c65dda713b6c39c24e22373cf41f6d35887c71ab21724aa5cfd"
+    },
+    "web-instant-loading": {
+      "source": "afuhflynn/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/engineering/web-instant-loading/SKILL.md",
+      "computedHash": "791df80d3db50d24da0b86a0f6cec077da385aba1365acc9730b3337fcbaf1e9"
+    },
+    "push-it": {
+      "source": "afuhflynn/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/engineering/push-it/SKILL.md",
+      "computedHash": "dff767dc538bbdcca948fdb5259653ed25b6f230e454f2618d8d2e3e7b7ebf08"
+    },
+    "ship-it": {
+      "source": "afuhflynn/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/engineering/ship-it/SKILL.md",
+      "computedHash": "4cbaec6c9578eb35fe2fe46f0b811131543927318e5b9db2f0e47ef15e8894e8"
     }
   }
 }

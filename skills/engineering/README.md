@@ -18,3 +18,21 @@ Model- or user-reachable (rich trigger phrasing so the model can reach for them)
 - **[verify-release](./verify-release/SKILL.md)** - Drive the real app and prove the change works against its spec. Read only, no durable files.
 - **[peer-review](./peer-review/SKILL.md)** - Fresh model senior read of the diff before merge. Writes ranked findings to docs/reviews/.
 - **[state-sync](./state-sync/SKILL.md)** - Reconcile AGENTS.md, scope, and spec statuses to repo evidence around merge. Surgical edits only.
+
+## User-invoked
+
+Reachable only by the human typing its name. Human-facing description; no model auto-invocation.
+
+- **[web-discoverability](./web-discoverability/SKILL.md)** - Router for the full machine-discoverability stack: SEO, structured data/AEO-GEO, social preview cards, and instant loading. Use when you want to make a whole site findable by search engines and AI agents.
+
+## Model-invoked (web discoverability)
+
+- **[web-seo-core](./web-seo-core/SKILL.md)** - Make one URL own one page: unique titles, descriptions, canonicals, robots rules, sitemap.xml, robots.txt, SSR/prerender decision per route, and a real 404 page.
+- **[web-structured-data-geo](./web-structured-data-geo/SKILL.md)** - Build one JSON-LD `@graph` per page: Organization/Person/WebSite with stable `@id` values, Article/BreadcrumbList/Product schema matched to visible content, and llms.txt + llms-full.txt for AI crawlers (AEO/GEO).
+- **[web-social-cards](./web-social-cards/SKILL.md)** - Open Graph + Twitter Card tags on every shareable page: og:title, og:type, og:image, og:url; twitter:card summary_large_image; 1200x630 absolute images with width/height/alt; dynamic per-route OG images.
+- **[web-instant-loading](./web-instant-loading/SKILL.md)** - Content and meta in the first HTML with no loading skeletons on indexable pages: SSR/SSG/prerender, LCP image with fetchpriority=high, explicit image dimensions, font-display swap, preload critical resources, CLS under 0.1.
+
+## Model-invoked (git workflow)
+
+- **[push-it](./push-it/SKILL.md)** - Stage everything, commit it cleanly on the branch you are already on, push to origin, done. No new branch, no PR text, no ceremony.
+- **[ship-it](./ship-it/SKILL.md)** - Stage everything, commit it well documented on a new appropriately named branch, push to GitHub, and hand back a PR title plus a full PR description.

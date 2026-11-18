@@ -56,6 +56,20 @@ Skills for daily code work.
 - **[peer-review](./skills/engineering/peer-review/SKILL.md)** - Fresh model code review before merge, findings in docs/reviews/.
 - **[state-sync](./skills/engineering/state-sync/SKILL.md)** - Reconcile AGENTS.md, scope, and specs to repo evidence.
 
+**User-invoked**
+
+- **[web-discoverability](./skills/engineering/web-discoverability/SKILL.md)** - Router for the full machine-discoverability stack: SEO, structured data/AEO-GEO, social preview cards, and instant loading. Use when you want to make a whole site findable by search engines and AI agents.
+
+**Model-invoked**
+
+- **[web-seo-core](./skills/engineering/web-seo-core/SKILL.md)** - Make one URL own one page: unique titles, descriptions, canonicals, robots rules, sitemap.xml, robots.txt, SSR/prerender decision per route, and a real 404 page.
+- **[web-structured-data-geo](./skills/engineering/web-structured-data-geo/SKILL.md)** - Build one JSON-LD `@graph` per page: Organization/Person/WebSite with stable `@id` values, Article/BreadcrumbList/Product schema matched to visible content, and llms.txt + llms-full.txt for AI crawlers (AEO/GEO).
+- **[web-social-cards](./skills/engineering/web-social-cards/SKILL.md)** - Open Graph + Twitter Card tags on every shareable page: og:title, og:type, og:image, og:url; twitter:card summary_large_image; 1200x630 absolute images with width/height/alt; dynamic per-route OG images.
+- **[web-instant-loading](./skills/engineering/web-instant-loading/SKILL.md)** - Content and meta in the first HTML with no loading skeletons on indexable pages: SSR/SSG/prerender, LCP image with fetchpriority=high, explicit image dimensions, font-display swap, preload critical resources, CLS under 0.1.
+
+- **[push-it](./skills/engineering/push-it/SKILL.md)** - Stage everything, commit it cleanly on the branch you are already on, push to origin, done. No new branch, no PR text, no ceremony.
+- **[ship-it](./skills/engineering/ship-it/SKILL.md)** - Stage everything, commit it well documented on a new appropriately named branch, push to GitHub, and hand back a PR title plus a full PR description.
+
 ### Productivity
 
 General workflow tools, not code-specific.

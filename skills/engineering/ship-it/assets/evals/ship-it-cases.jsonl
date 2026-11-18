@@ -1,0 +1,12 @@
+{"trigger": "ship it", "should_run": true, "reason": "Explicit ship-it trigger phrase"}
+{"trigger": "ship it as fix/login-redirect", "should_run": true, "reason": "Branch name override trigger"}
+{"trigger": "ship it to develop", "should_run": true, "reason": "Base branch override trigger"}
+{"trigger": "commit the changes well documented, on a new appropriately named branch, push to GitHub, and give me a PR title and full PR description", "should_run": true, "reason": "Full descriptive trigger"}
+{"trigger": "push this up and write the PR text for me", "should_run": true, "reason": "Equivalent plain-language trigger"}
+{"trigger": "land this branch and prep the PR", "should_run": true, "reason": "Equivalent plain-language trigger"}
+{"trigger": "just commit this locally, do not push", "should_run": false, "reason": "No push requested — commit only job"}
+{"trigger": "amend that last commit", "should_run": false, "reason": "History rewriting is forbidden"}
+{"trigger": "rebase this onto master", "should_run": false, "reason": "History rewriting is forbidden"}
+{"trigger": "create the PR for me with gh", "should_run": false, "reason": "PR creation is a separate explicit ask"}
+{"trigger": "tag v1.2 and cut a release", "should_run": false, "reason": "Release work, not shipping a change set"}
+{"trigger": "commit and push", "should_run": false, "reason": "No branch or PR mention — this is push-it territory"}

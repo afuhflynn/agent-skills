@@ -1,0 +1,15 @@
+# Site Name
+
+> One-paragraph summary of the site and what it offers.
+
+## Key Pages
+
+- [Home](https://example.com) — Site overview, featured projects, current work.
+- [Blog](https://example.com/blog) — Essays and articles on engineering and AI.
+- [Projects](https://example.com/projects) — Case studies of shipped products.
+- [Sitemap](https://example.com/sitemap.xml) — Full URL index for crawlers.
+
+## Optional
+
+- [Credentials](https://example.com/credentials) — Certificates and achievements.
+- [Music](https://example.com/music) — Recordings and practice notes.

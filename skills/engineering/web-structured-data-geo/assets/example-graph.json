@@ -1,0 +1,39 @@
+// Example: one @graph per page, nodes linked by stable @id
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@id": "https://example.com/#organization",
+      "@type": "Organization",
+      "name": "Site",
+      "url": "https://example.com",
+      "logo": "https://example.com/logo.png",
+      "sameAs": ["https://github.com/handle", "https://linkedin.com/company/handle"]
+    },
+    {
+      "@id": "https://example.com/#person",
+      "@type": "Person",
+      "name": "Author",
+      "url": "https://example.com/about",
+      "sameAs": ["https://github.com/handle"]
+    },
+    {
+      "@id": "https://example.com/#website",
+      "@type": "WebSite",
+      "name": "Site",
+      "url": "https://example.com",
+      "publisher": { "@id": "https://example.com/#organization" }
+    },
+    {
+      "@id": "https://example.com/blog/my-article#webpage",
+      "@type": "Article",
+      "headline": "My Article",
+      "datePublished": "2026-01-01T00:00:00Z",
+      "dateModified": "2026-01-02T00:00:00Z",
+      "author": { "@id": "https://example.com/#person" },
+      "publisher": { "@id": "https://example.com/#organization" },
+      "mainEntityOfPage": { "@id": "https://example.com/blog/my-article#webpage" },
+      "url": "https://example.com/blog/my-article"
+    }
+  ]
+}

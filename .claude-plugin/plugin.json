@@ -13,6 +13,13 @@
     "./skills/engineering/verify-release",
     "./skills/engineering/peer-review",
     "./skills/engineering/state-sync",
+    "./skills/engineering/web-discoverability",
+    "./skills/engineering/web-seo-core",
+    "./skills/engineering/web-structured-data-geo",
+    "./skills/engineering/web-social-cards",
+    "./skills/engineering/web-instant-loading",
+    "./skills/engineering/push-it",
+    "./skills/engineering/ship-it",
     "./skills/productivity/tech-writer"
   ]
 }

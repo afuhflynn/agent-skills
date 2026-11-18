@@ -1,0 +1,10 @@
+{"trigger": "push it", "should_run": true, "reason": "Explicit push-it trigger phrase"}
+{"trigger": "commit and push", "should_run": true, "reason": "Explicit push-it trigger phrase"}
+{"trigger": "push these changes up", "should_run": true, "reason": "Equivalent plain-language trigger"}
+{"trigger": "save this on the branch and push", "should_run": true, "reason": "Equivalent plain-language trigger"}
+{"trigger": "ship it", "should_run": false, "reason": "ship-it owns new branches and PR text"}
+{"trigger": "land this and prep the PR", "should_run": false, "reason": "ship-it owns PR text and branches"}
+{"trigger": "just commit this locally, do not push", "should_run": false, "reason": "No push requested"}
+{"trigger": "amend that commit", "should_run": false, "reason": "History rewriting is forbidden"}
+{"trigger": "force push it", "should_run": false, "reason": "Force push is forbidden"}
+{"trigger": "create a branch for this first", "should_run": false, "reason": "Branch creation sends the job to ship-it"}
